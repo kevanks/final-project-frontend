@@ -9,6 +9,7 @@ const AddMovie = () => {
   const [rating, setRating] = useState('');
   const [rank, setRank] = useState('');
   const [comments, setComments] = useState('');
+  const [imgurl, setImgurl] = useState('');
 
   const handleChangeTitle = (e) => {
     setTitle(e.target.value)
@@ -38,16 +39,20 @@ const AddMovie = () => {
     setComments(e.target.value)
   }
 
+  const handleChangeImgURL = (e) => {
+    setImgurl(e.target.value)
+  }
+
   const handleNewMovie = async (e) => {
     e.preventDefault()
     try {
-      const body = { title, year, director, genre, rating, rank, comments }
+      const body = { title, year, director, genre, rating, rank, comments, imgurl }
       const response = await fetch("http://localhost:5000/movies", {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify(body)
       })
-      console.log(response);
+      window.location = "/";
     } catch (err) {
       console.log(err.message);
     }
@@ -63,6 +68,7 @@ const AddMovie = () => {
         <input name="rating" onChange={handleChangeRating} type="number" min="1" max="5" placeholder="Rating (1-5)"/> <br/>
         <input name="rank" onChange={handleChangeRank} type="number" min="1" max="10" placeholder="Rank"/> <br/>
         <input name="comments" onChange={handleChangeComments} type="text" placeholder="Comments"/> <br/>
+        <input name="imgurl" onChange={handleChangeImgURL} type="text" placeholder="Image URL"/> <br/>
         <input className="btn btn-success mt-2" type="submit" value="Add Movie"/>
       </form>
     </>

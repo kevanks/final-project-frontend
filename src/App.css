@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+.movies {
+  display: flex;
+  flex-direction: row;
+}
+
+.card {
+  margin: 10px 10px 10px 10px;
+  width: 16rem;
+}
+
+.btn {
+  align-items: center;
+}
