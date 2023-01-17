@@ -2,46 +2,46 @@ import React, {useState} from 'react'
 
 const AddMovie = () => {
 
-  const [newTitle, setNewTitle] = useState('');
-  const [newYear, setNewYear] = useState('');
-  const [newDirector, setNewDirector] = useState('');
-  const [newGenre, setNewGenre] = useState('');
-  const [newRating, setNewRating] = useState('');
-  const [newRank, setNewRank] = useState('');
-  const [newComments, setNewComments] = useState('');
+  const [title, setTitle] = useState('');
+  const [year, setYear] = useState('');
+  const [director, setDirector] = useState('');
+  const [genre, setGenre] = useState('');
+  const [rating, setRating] = useState('');
+  const [rank, setRank] = useState('');
+  const [comments, setComments] = useState('');
 
   const handleChangeTitle = (e) => {
-    setNewTitle(e.target.value)
+    setTitle(e.target.value)
   }
 
   const handleChangeYear = (e) => {
-    setNewYear(e.target.value)
+    setYear(e.target.value)
   }
 
   const handleChangeDirector = (e) => {
-    setNewDirector(e.target.value)
+    setDirector(e.target.value)
   }
 
   const handleChangeGenre = (e) => {
-    setNewGenre(e.target.value)
+    setGenre(e.target.value)
   }
 
   const handleChangeRating = (e) => {
-    setNewRating(e.target.value)
+    setRating(e.target.value)
   }
 
   const handleChangeRank = (e) => {
-    setNewRank(e.target.value)
+    setRank(e.target.value)
   }
 
   const handleChangeComments = (e) => {
-    setNewComments(e.target.value)
+    setComments(e.target.value)
   }
 
   const handleNewMovie = async (e) => {
     e.preventDefault()
     try {
-      const body = { newTitle, newYear, newDirector, newGenre, newRating, newRank, newComments }
+      const body = { title, year, director, genre, rating, rank, comments }
       const response = await fetch("http://localhost:5000/movies", {
         method: "POST",
         headers: { "Content-type": "application/json" },
