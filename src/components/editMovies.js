@@ -22,6 +22,7 @@ const EditMovie = (props) => {
         body: JSON.stringify(body)
       })
       window.location = "/";
+      props.getMovies()
     } catch (err) {
       console.log(err.message);
     }
