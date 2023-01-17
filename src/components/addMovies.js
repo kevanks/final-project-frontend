@@ -47,7 +47,7 @@ const AddMovie = () => {
     e.preventDefault()
     try {
       const body = { title, year, director, genre, rating, rank, comments, imgurl }
-      const response = await fetch("http://localhost:5000/movies", {
+      const response = await fetch("https://obscure-caverns-74597.herokuapp.com/movies", {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify(body)
@@ -60,7 +60,9 @@ const AddMovie = () => {
 
   return (
     <>
+    <div className="addButtn">
       <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">Add Movie</button>
+      </div>
       <div className="modal" id="addModal">
         <div className="modal-dialog">
           <div className="modal-content">

@@ -16,7 +16,7 @@ const EditMovie = (props) => {
     e.preventDefault()
     try {
       const body = { title, year, director, genre, rating, rank, comments, imgurl }
-      const response = await fetch(`http://localhost:5000/movies/${props.movie.id}`, {
+      const response = await fetch(`https://obscure-caverns-74597.herokuapp.com/movies/${props.movie.id}`, {
         method: "PUT",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify(body)

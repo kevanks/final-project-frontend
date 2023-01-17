@@ -41,6 +41,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 .card {
@@ -48,6 +49,14 @@
   width: 16rem;
 }
 
-.btn {
-  align-items: center;
+.addButtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }

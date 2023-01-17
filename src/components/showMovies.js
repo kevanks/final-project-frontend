@@ -11,7 +11,7 @@ const ShowMovies = () => {
 
   const getMovies = async () => {
     try {
-      const response = await fetch("http://localhost:5000/movies")
+      const response = await fetch("https://obscure-caverns-74597.herokuapp.com/movies")
       const jsonData = await response.json()
       setMovies(jsonData)
     } catch (err) {
@@ -22,7 +22,7 @@ const ShowMovies = () => {
   // delete function
   const handleDelete = async (id) => {
     try {
-      const deleteMovie = await fetch(`http://localhost:5000/movies/${id}`, {
+      const deleteMovie = await fetch(`https://obscure-caverns-74597.herokuapp.com/movies/${id}`, {
         method: "DELETE"
       })
       setMovies(movies.filter(movie => movie.id !== id))
@@ -42,13 +42,14 @@ const ShowMovies = () => {
       {movies.map((movie) => {
         return (
             <div className="card" key={movie.id}>
-              <img src={movie.imgurl} className="card-img-top" width="200" height="375"/>
+              <img src={movie.imgurl} className="card-img-top" width="200" height="375" data-bs-toggle="modal" data-bs-target={`#show${movie.id}`}/>
               <div className="card-body">
                 <h4 className="text-center">{movie.title} ({movie.year})</h4>
                 <h4 className="text-center">{movie.rank}</h4>
-                <button className="btn btn-info" data-bs-toggle="modal" data-bs-target={`#show${movie.id}`}>Show More</button>
-                <EditMovie movie={movie} getMovies={getMovies}/>
-                <button className="btn btn-danger" onClick={() => handleDelete(movie.id)}>Delete</button>
+                <div className="buttons">
+                  <EditMovie movie={movie} getMovies={getMovies}/>
+                  <button className="btn btn-danger" onClick={() => handleDelete(movie.id)}>Delete</button>
+                </div>
               </div>
             <div class="modal" id={`show${movie.id}`}>
             <div class="modal-dialog">
