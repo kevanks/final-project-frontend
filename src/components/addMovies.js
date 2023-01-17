@@ -60,17 +60,34 @@ const AddMovie = () => {
 
   return (
     <>
-      <form className="form-control" onSubmit={handleNewMovie}>
-        <input name="title" onChange={handleChangeTitle} type="text" placeholder="Movie Title"/> <br/>
-        <input name="year" onChange={handleChangeYear} type="number" placeholder="Year Released"/> <br/>
-        <input name="director" onChange={handleChangeDirector} type="text" placeholder="Director"/> <br/>
-        <input name="genre" onChange={handleChangeGenre} type="text" placeholder="Genre"/> <br/>
-        <input name="rating" onChange={handleChangeRating} type="number" min="1" max="5" placeholder="Rating (1-5)"/> <br/>
-        <input name="rank" onChange={handleChangeRank} type="number" min="1" max="10" placeholder="Rank"/> <br/>
-        <input name="comments" onChange={handleChangeComments} type="text" placeholder="Comments"/> <br/>
-        <input name="imgurl" onChange={handleChangeImgURL} type="text" placeholder="Image URL"/> <br/>
-        <input className="btn btn-success mt-2" type="submit" value="Add Movie"/>
-      </form>
+      <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">Add Movie</button>
+      <div className="modal" id="addModal">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h4 className="modal-title">Add Movie</h4>
+            </div>
+
+            <div className="modal-body">
+              <form className="form-control" onSubmit={handleNewMovie}>
+                <input name="title" className="form-control" onChange={handleChangeTitle} type="text" placeholder="Movie Title"/> <br/>
+                <input name="year" className="form-control" onChange={handleChangeYear} type="number" placeholder="Year Released"/> <br/>
+                <input name="director" className="form-control" onChange={handleChangeDirector} type="text" placeholder="Director"/> <br/>
+                <input name="genre" className="form-control" onChange={handleChangeGenre} type="text" placeholder="Genre"/> <br/>
+                <input name="rating" className="form-control" onChange={handleChangeRating} type="number" min="1" max="5" placeholder="Rating (1-5)"/> <br/>
+                <input name="rank" className="form-control" onChange={handleChangeRank} type="number" min="1" max="10" placeholder="Ranking"/> <br/>
+                <input name="comments" className="form-control" onChange={handleChangeComments} type="text" placeholder="Comments"/> <br/>
+                <input name="imgurl" className="form-control" onChange={handleChangeImgURL} type="text" placeholder="Image URL"/> <br/>
+                <input className="btn btn-primary mt-2" type="submit" value="Add Movie"/>
+              </form>
+            </div>
+
+            <div className="modal-footer">
+              <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

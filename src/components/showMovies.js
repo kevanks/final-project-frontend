@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import EditMovie from './editMovies.js'
 import '../App.css';
 
 
@@ -40,10 +41,11 @@ const ShowMovies = () => {
         return (
           <div className="movies">
             <div className="card" key={movie.id}>
-              <img src={movie.imgurl} className="card-img-top" width="150" height="300"/>
+              <img src={movie.imgurl} className="card-img-top" width="200" height="375"/>
               <div className="card-body">
                 <h4 className="text-center">{movie.title} ({movie.year})</h4>
                 <h4 className="text-center">{movie.rank}</h4>
+                <EditMovie movie={movie} />
                 <button className="btn btn-danger" onClick={() => handleDelete(movie.id)}>Delete</button>
               </div>
             </div>
