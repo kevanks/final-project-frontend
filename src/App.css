@@ -55,6 +55,12 @@
   justify-content: space-evenly;
 }
 
+.loginButtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
 .buttons {
   display: flex;
   flex-direction: row;

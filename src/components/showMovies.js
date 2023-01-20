@@ -11,7 +11,7 @@ const ShowMovies = () => {
 
   const getMovies = async () => {
     try {
-      const response = await fetch("https://obscure-caverns-74597.herokuapp.com/movies")
+      const response = await fetch("http://localhost:5000/movies")
       const jsonData = await response.json()
       setMovies(jsonData)
     } catch (err) {
@@ -22,7 +22,7 @@ const ShowMovies = () => {
   // delete function
   const handleDelete = async (id) => {
     try {
-      const deleteMovie = await fetch(`https://obscure-caverns-74597.herokuapp.com/movies/${id}`, {
+      const deleteMovie = await fetch(`http://localhost:5000/movies/${id}`, {
         method: "DELETE"
       })
       setMovies(movies.filter(movie => movie.id !== id))
