@@ -3,6 +3,7 @@ import './App.css';
 import AddMovie from './components/addMovies.js'
 import ShowMovies from './components/showMovies.js'
 import Login from './components/login.js'
+import Register from './components/register.js'
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
 
   return (
     <>
+    <Register setCurrentUser={setCurrentUser}/>
     <Login setCurrentUser={setCurrentUser}/>
     <div>
       <h4>Logged in as: {currentUser.username}</h4>

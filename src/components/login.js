@@ -9,6 +9,7 @@ const Login = (props) => {
   const [logoutButton, setLogoutButton] = useState(true)
   const [wrongPasswordEntered, setWrongPasswordEntered] = useState(true)
 
+
   const handleEmail = (e) => {
     setEmail(e.target.value)
   }
@@ -17,8 +18,10 @@ const Login = (props) => {
     setPassword(e.target.value)
   }
 
+  // handles the login of a user
   const handleLogin = async (e) => {
     e.preventDefault()
+    setWrongPasswordEntered(true)
     try {
       const user = { email, password }
       const response = await fetch("http://localhost:5000/users/login", {
@@ -32,26 +35,31 @@ const Login = (props) => {
       } else {
         props.setCurrentUser(response[0])
         setLogoutButton(false)
+
       }
     } catch (err) {
 
     }
   }
 
+  // logs out user
   const handleLogout = () => {
     props.setCurrentUser({})
     setLogoutButton(true)
   }
 
+
+
   return (
     <>
     <div className="loginButtn">
       { (logoutButton) ?
-      <button type="button" className="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+      <button type="button" className="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#loginModal" >Login</button>
       :
       <button type="button" className="btn btn-primary mt-3" onClick={handleLogout} >Logout</button>
       }
     </div>
+
     <div className="modal" id="loginModal">
       <div className="modal-dialog">
         <div className="modal-content">
@@ -65,7 +73,7 @@ const Login = (props) => {
               {(wrongPasswordEntered) ? null :
                 <p>The password you have entered is wrong. Please try again.</p>
               }
-              <input className="btn btn-primary mt-2" type="submit" value="Login"/>
+              <input className="btn btn-primary mt-2" type="submit" value="Login" />
             </form>
           </div>
 
@@ -76,6 +84,7 @@ const Login = (props) => {
         </div>
       </div>
     </div>
+
     </>
   )
 }

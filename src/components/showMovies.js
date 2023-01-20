@@ -3,7 +3,6 @@ import EditMovie from './editMovies.js'
 import '../App.css';
 
 
-
 const ShowMovies = () => {
 
   const [movies, setMovies] = useState([])
