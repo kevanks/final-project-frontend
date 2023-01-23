@@ -37,16 +37,68 @@
   }
 }
 
-.container {
+body {
+  background-color: #77ACA2;
+  color: white;
+}
+
+.title {
+  font-size: 100px;
+  font-family: 'Anton', sans-serif;
+}
+
+.welcomeText {
+  font-size: 22px;
+  font-family: 'Crimson Text', serif;
+}
+
+.card {
+  background-color: #9DBEBB;
+  font-family: 'Anton', sans-serif;
+  margin: 10px 10px 10px 10px;
+  width: 16rem;
+}
+
+.modal-body {
+  background-color: #9DBEBB;
+  color: black;
+}
+
+.modal-header {
+  background-color: #9DBEBB;
+  color: black;
+}
+
+.modal-footer {
+  background-color: #9DBEBB;
+}
+
+.card-body {
+  color: black;
+}
+
+.form {
+  background-color: #9DBEBB;
+}
+
+.loggedInAs {
+  font-family: 'Anton', sans-serif;
+  margin-left: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+
+.container, .allMovies {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
 
-.card {
-  margin: 10px 10px 10px 10px;
-  width: 16rem;
+.btn {
+  font-family: 'Anton', sans-serif;
 }
 
 .addButtn {
@@ -55,9 +107,14 @@
   justify-content: space-evenly;
 }
 
-.loginButtn {
+.logButtns {
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+
+.logoutButtns {
   justify-content: flex-end;
 }
 

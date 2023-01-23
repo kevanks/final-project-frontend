@@ -3,20 +3,11 @@ import EditMovie from './editMovies.js'
 import '../App.css';
 
 
-const ShowMovies = () => {
+const ShowMovies = (props) => {
 
   const [movies, setMovies] = useState([])
 
 
-  const getMovies = async () => {
-    try {
-      const response = await fetch("http://localhost:5000/movies")
-      const jsonData = await response.json()
-      setMovies(jsonData)
-    } catch (err) {
-      console.log(err.message);
-    }
-  }
 
   // delete function
   const handleDelete = async (id) => {
@@ -31,13 +22,12 @@ const ShowMovies = () => {
   }
 
   useEffect(() => {
-    getMovies()
+    props.getMovies()
   }, [])
 
   return (
     <>
-      <h1 className="text-center mt-5">TOP 10 MOVIES</h1>
-      <div className="container">
+      <div className="container mt-5">
       {movies.map((movie) => {
         return (
             <div className="card" key={movie.id}>
@@ -46,18 +36,18 @@ const ShowMovies = () => {
                 <h4 className="text-center">{movie.title} ({movie.year})</h4>
                 <h4 className="text-center">{movie.rank}</h4>
                 <div className="buttons">
-                  <EditMovie movie={movie} getMovies={getMovies}/>
+                  <EditMovie movie={movie} />
                   <button className="btn btn-danger" onClick={() => handleDelete(movie.id)}>Delete</button>
                 </div>
               </div>
-            <div class="modal" id={`show${movie.id}`}>
-            <div class="modal-dialog">
-            <div class="modal-content">
+            <div className="modal" id={`show${movie.id}`}>
+            <div className="modal-dialog">
+            <div className="modal-content">
 
-            <div class="modal-header text-center">
-              <h4 class="text-center">{movie.title} ({movie.year})</h4>
+            <div className="modal-header text-center">
+              <h4 className="text-center">{movie.title} ({movie.year})</h4>
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
               <img src={movie.imgurl} className="center" width="465" height="640"/>
               <h5 className="text-center mt-3">Director: {movie.director}</h5>
               <h5 className="text-center mt-2">Genre: {movie.genre}</h5>
@@ -67,8 +57,8 @@ const ShowMovies = () => {
               <p className="text-center">{movie.comments}</p>
             </div>
 
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Close</button>
             </div>
 
             </div>

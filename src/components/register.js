@@ -35,7 +35,7 @@ const Register = (props) => {
     try {
       const newUser = { email, username, password }
       if (password === password2) {
-        const response = await fetch("http://localhost:5000/users/register", {
+        const response = await fetch("https://obscure-caverns-74597.herokuapp.com/users/register", {
           method: "POST",
           headers: { "Content-type": "application/json" },
           body: JSON.stringify(newUser)
@@ -44,6 +44,9 @@ const Register = (props) => {
           setEmailTaken(false)
         } else {
           props.setCurrentUser(response[0])
+          setLogoutButton(false)
+          props.setHomePage(false)
+          props.setLoginButtn(true)
         }
       } else {
         setPasswordsDontMatch(false)
@@ -54,23 +57,25 @@ const Register = (props) => {
     }
   }
 
-  const registerButton = () => {
 
-  }
 
   // logs out user
   const handleLogout = () => {
     props.setCurrentUser({})
     setLogoutButton(true)
+    props.setLoginButtn(false)
+    props.setHomePage(true)
   }
 
   return (
     <>
-    <div className="loginButtn">
+    <div>
       { (logoutButton) ?
-      <button type="button" className="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#registerModal" onClick={registerButton} >Register</button>
+      <button type="button" className="btn btn-secondary btn-lg  mt-3" data-bs-toggle="modal" data-bs-target="#registerModal"  >Register</button>
       :
-      <button type="button" className="btn btn-primary mt-3" onClick={handleLogout} >Logout</button>
+      <div className="logoutButtns">
+        <button type="button" className="btn btn-secondary mt-3" onClick={handleLogout} >Logout</button>
+      </div>
       }
     </div>
       <div class="modal" id="registerModal">
@@ -94,7 +99,7 @@ const Register = (props) => {
               {(passwordsDontMatch) ? null :
                 <p>Passwords do not match. Please try again.</p>
               }
-              <input className="btn btn-primary mt-2" type="submit" value="Register" />
+              <input className="btn btn-secondary mt-2" type="submit" value="Register" />
             </form>
           </div>
 

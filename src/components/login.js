@@ -24,21 +24,25 @@ const Login = (props) => {
     setWrongPasswordEntered(true)
     try {
       const user = { email, password }
-      const response = await fetch("http://localhost:5000/users/login", {
+      const response = await fetch("https://obscure-caverns-74597.herokuapp.com/users/login", {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify(user)
       }).then((response) => response.json())
-      console.log(response);
       if (response === "invalid password") {
         setWrongPasswordEntered(false)
       } else {
         props.setCurrentUser(response[0])
+        props.setCurrentUser(response[0])
+        console.log(response[0]);
         setLogoutButton(false)
+        props.getMovies()
+        props.setHomePage(false)
+        props.setRegisterButtn(true)
 
       }
     } catch (err) {
-
+      console.log(err.message);
     }
   }
 
@@ -46,17 +50,24 @@ const Login = (props) => {
   const handleLogout = () => {
     props.setCurrentUser({})
     setLogoutButton(true)
+    props.setRegisterButtn(false)
+    props.setHomePage(true)
   }
+
+
+
 
 
 
   return (
     <>
-    <div className="loginButtn">
+    <div>
       { (logoutButton) ?
-      <button type="button" className="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#loginModal" >Login</button>
+      <button type="button" className="btn btn-secondary btn-lg mt-3" data-bs-toggle="modal" data-bs-target="#loginModal" >Login</button>
       :
-      <button type="button" className="btn btn-primary mt-3" onClick={handleLogout} >Logout</button>
+      <div className="logoutButtns">
+        <button type="button" className="btn btn-secondary mt-3" onClick={handleLogout} >Logout</button>
+      </div>
       }
     </div>
 
@@ -73,7 +84,7 @@ const Login = (props) => {
               {(wrongPasswordEntered) ? null :
                 <p>The password you have entered is wrong. Please try again.</p>
               }
-              <input className="btn btn-primary mt-2" type="submit" value="Login" />
+              <input className="btn btn-secondary mt-2" type="submit" value="Login"/>
             </form>
           </div>
 
